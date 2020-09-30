@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-ini_set ("display_errors","1");
-ini_set("display_startup_errors","1");
+ini_set("display_errors", "1");
+ini_set("display_startup_errors", "1");
 error_reporting(E_ALL);
 
 //variables
@@ -15,13 +15,16 @@ $pokName = $_GET["inputValue"];
 // to fetch data use file_get_contents
 //file_get_contents ( string $filename [, bool $use_include_path = FALSE [, resource $context [, int $offset = 0 [, int $maxlen ]]]] ) : string
 //Name
-if(isset($pokName)){
+if (isset($pokName)) {
     $pokeIndex = file_get_contents("https://pokeapi.co/api/v2/pokemon/$pokName");
-    $data =json_decode($pokeIndex, true);
+    $data = json_decode($pokeIndex, true);
     echo $data;
 } else {
     $pokName = '';
 }
+
+//moves: there are more than 1 moves so try to make a loop for the moves
+
 var_dump($data);
 //ID
 
@@ -51,9 +54,12 @@ echo $data["name"];
 ?>
 <?php
 echo $data["id"];
-
+?>
+<?php
+echo $data["moves"]["0"]["move"]["name"];
 ?>
 <img src="<?php echo $data["sprites"]["front_default"] ?>" alt="">
+
 
 
 </body>
