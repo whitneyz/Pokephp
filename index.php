@@ -9,14 +9,13 @@ error_reporting(E_ALL);
 //variables
 $pokName = $_GET["inputValue"];
 
-
 //todo does var_dump comes after the variables?
 
 // to fetch data use file_get_contents
 //file_get_contents ( string $filename [, bool $use_include_path = FALSE [, resource $context [, int $offset = 0 [, int $maxlen ]]]] ) : string
 //Name
 if (isset($pokName)) {
-    $pokeIndex = file_get_contents("https://pokeapi.co/api/v2/pokemon/$pokName");
+    $pokeIndex = file_get_contents("https://pokeapi.co/api/v2/pokemon/" . $pokName);
     $data = json_decode($pokeIndex, true);
     echo $data;
 } else {
@@ -24,12 +23,30 @@ if (isset($pokName)) {
 }
 
 //moves: there are more than 1 moves so try to make a loop for the moves
+//loop 4 times through array with random number
 
-var_dump($data);
-//ID
+//var_dump($data);
+$allMoves = $data["moves"];
+$randomMoves = selectMoves($allMoves);
 
 
+function selectMoves($moves){
+    $fourMoves = "";
+    for ($i = 0; $i < 4; $i++) {
+        $fourMoves .= $moves[$i]["move"]["name"];
+    }
+
+
+
+//todo random getal genereren 4x, let op random getal moet tussen 0-aantal moves? (uitzoeken) liggen, pas op voor Ditto is een speciale
+
+    return $fourMoves;
+
+}
+
+//todo voor evolution eerst loop daarna in poke evolution een string krijgen voor alle pokemon op een rijtje
 // moet van de ene pokemon naar de andere kunnen gaan op basis van id of naam
+
 
 //html code if condition is true
 // dus als id is 1 dan tonen we pokemon 1??? en dan door de array met een loop om de volgende ID te vinden
@@ -56,7 +73,7 @@ echo $data["name"];
 echo $data["id"];
 ?>
 <?php
-echo $data["moves"]["0"]["move"]["name"];
+echo $randomMoves;
 ?>
 <img src="<?php echo $data["sprites"]["front_default"] ?>" alt="">
 
