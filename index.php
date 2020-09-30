@@ -1,23 +1,30 @@
 <?php
 
-//todo place ini error functions above
 declare(strict_types=1);
 
 ini_set ("display_errors","1");
-ini_set("display_errors","1");
+ini_set("display_startup_errors","1");
 error_reporting(E_ALL);
 
-$pokName = $_GET[inputValue];
+//variables
+$pokName = $_GET["inputValue"];
+
+
+//todo does var_dump comes after the variables?
 
 // to fetch data use file_get_contents
 //file_get_contents ( string $filename [, bool $use_include_path = FALSE [, resource $context [, int $offset = 0 [, int $maxlen ]]]] ) : string
+//Name
 if(isset($pokName)){
     $pokeIndex = file_get_contents("https://pokeapi.co/api/v2/pokemon/$pokName");
-    $data = var_dump(json_decode($pokeIndex, true));
+    $data =json_decode($pokeIndex, true);
     echo $data;
 } else {
     $pokName = '';
 }
+var_dump($data);
+//ID
+
 
 // moet van de ene pokemon naar de andere kunnen gaan op basis van id of naam
 
@@ -39,6 +46,15 @@ if(isset($pokName)){
     <input type="text" name="inputValue">
     <input type="submit" value="click">
 </form>
+<?php
+echo $data["name"];
+?>
+<?php
+echo $data["id"];
+
+?>
+<img src="<?php echo $data["sprites"]["front_default"] ?>" alt="">
+
 
 </body>
 </html>
