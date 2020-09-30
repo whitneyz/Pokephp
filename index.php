@@ -28,7 +28,8 @@ if (isset($pokName)) {
 //var_dump($data);
 $allMoves = $data["moves"];
 $randomMoves = selectMoves($allMoves);
-
+$input = $fourMoves;
+$rand_keys =
 
 function selectMoves($moves){
     $fourMoves = "";
@@ -39,7 +40,12 @@ function selectMoves($moves){
 
 
 //todo random getal genereren 4x, let op random getal moet tussen 0-aantal moves? (uitzoeken) liggen, pas op voor Ditto is een speciale
-
+/* <?php
+$input = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
+$rand_keys = array_rand($input, 2);
+echo $input[$rand_keys[0]] . "\n";
+echo $input[$rand_keys[1]] . "\n";
+?>*/
     return $fourMoves;
 
 }
