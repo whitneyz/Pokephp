@@ -8,8 +8,8 @@ error_reporting(E_ALL);
 
 //variables
 $pokName = $_GET["inputValue"];
+$pokEvolution = $_GET["inputValue"];
 
-//todo does var_dump comes after the variables?
 
 // to fetch data use file_get_contents
 //file_get_contents ( string $filename [, bool $use_include_path = FALSE [, resource $context [, int $offset = 0 [, int $maxlen ]]]] ) : string
@@ -29,28 +29,31 @@ if (isset($pokName)) {
 $allMoves = $data["moves"];
 $randomMoves = selectMoves($allMoves);
 
-//$input = $fourMoves;
 
 
 function selectMoves($moves){
     $fourMoves = "";
     for ($i = 0; $i < 4; $i++) {
-        $randomNumber = rand(0,count($moves));
+        $randomNumber = rand(0,count($moves));//rand ( int $min , int $max ) : int
         $fourMoves .= $moves[$randomNumber]["move"]["name"];
+    }
+//todo  pas op voor Ditto is een speciale heeft maar een move (aparte functie?)
+    return $fourMoves;
+}
 
+if(isset($pokEvolution)) {
+    $pokeIndex2 = file_get_contents("https://pokeapi.co/api/v2/evolution-chain//" . $pokEvolution);
+    $data2 = json_decode($pokeIndex2, true);
+    echo $data2;
+} else {
+    $pokEvolution = '';
     }
 
 
 
-//todo random getal genereren 4x, let op random getal moet tussen 0-aantal moves? (uitzoeken) liggen, pas op voor Ditto is een speciale (aparte functie?)
-
-
-    return $fourMoves;
-
-}
 
 //todo voor evolution eerst loop daarna in poke evolution een string krijgen voor alle pokemon op een rijtje
-// moet van de ene pokemon naar de andere kunnen gaan op basis van id of naam
+// left right buttons moet van de ene pokemon naar de andere kunnen gaan op basis van id of naam
 
 
 
@@ -81,6 +84,9 @@ echo $data["id"];
 echo $randomMoves;
 ?>
 <img src="<?php echo $data["sprites"]["front_default"] ?>" alt="">
+<?php
+echo $evolutions;
+?>
 
 
 </body>
