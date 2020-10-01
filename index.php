@@ -48,8 +48,14 @@ if(isset($pokEvolution)) {
 } else {
     $pokEvolution = '';
     }
+$evolutions = $data2[""]
 
+// do while loop you want to loop through block of code as long as there are evolutions
+// condition true: as long as there are evolutions
 
+do {
+    //code;
+} while ();
 
 
 //todo voor evolution eerst loop daarna in poke evolution een string krijgen voor alle pokemon op een rijtje
@@ -85,7 +91,7 @@ echo $randomMoves;
 ?>
 <img src="<?php echo $data["sprites"]["front_default"] ?>" alt="">
 <?php
-echo $evolutions;
+echo $data2;
 ?>
 
 
