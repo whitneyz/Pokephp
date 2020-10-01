@@ -28,24 +28,23 @@ if (isset($pokName)) {
 //var_dump($data);
 $allMoves = $data["moves"];
 $randomMoves = selectMoves($allMoves);
-$input = $fourMoves;
-$rand_keys =
+
+//$input = $fourMoves;
+
 
 function selectMoves($moves){
     $fourMoves = "";
     for ($i = 0; $i < 4; $i++) {
-        $fourMoves .= $moves[$i]["move"]["name"];
+        $randomNumber = rand(0,count($moves));
+        $fourMoves .= $moves[$randomNumber]["move"]["name"];
+
     }
 
 
 
-//todo random getal genereren 4x, let op random getal moet tussen 0-aantal moves? (uitzoeken) liggen, pas op voor Ditto is een speciale
-/* <?php
-$input = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
-$rand_keys = array_rand($input, 2);
-echo $input[$rand_keys[0]] . "\n";
-echo $input[$rand_keys[1]] . "\n";
-?>*/
+//todo random getal genereren 4x, let op random getal moet tussen 0-aantal moves? (uitzoeken) liggen, pas op voor Ditto is een speciale (aparte functie?)
+
+
     return $fourMoves;
 
 }
@@ -54,8 +53,7 @@ echo $input[$rand_keys[1]] . "\n";
 // moet van de ene pokemon naar de andere kunnen gaan op basis van id of naam
 
 
-//html code if condition is true
-// dus als id is 1 dan tonen we pokemon 1??? en dan door de array met een loop om de volgende ID te vinden
+
 ?>
 
 <!doctype html>
@@ -79,10 +77,10 @@ echo $data["name"];
 echo $data["id"];
 ?>
 <?php
+//echo $data["moves"]["0"]["move"]["name"];
 echo $randomMoves;
 ?>
 <img src="<?php echo $data["sprites"]["front_default"] ?>" alt="">
-
 
 
 </body>
