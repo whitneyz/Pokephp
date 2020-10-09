@@ -25,7 +25,7 @@ if (isset($pokName)) {
 //moves: there are more than 1 moves so try to make a loop for the moves
 //loop 4 times through array with random number
 
-//var_dump($data);
+var_dump($data);
 $allMoves = $data["moves"];
 $randomMoves = selectMoves($allMoves);
 
@@ -50,18 +50,16 @@ if(isset($pokEvolution)) {
     }
 $evolutions = $data2[""]
 
-// do while loop you want to loop through block of code as long as there are evolutions
-// condition true: as long as there are evolutions
+/* do while loop you want to loop through block of code as long as there are evolutions
+ condition true: as long as there are evolutions
 
 do {
     //code;
-} while ();
-
-
+} while ();*/
 //todo voor evolution eerst loop daarna in poke evolution een string krijgen voor alle pokemon op een rijtje
 // left right buttons moet van de ene pokemon naar de andere kunnen gaan op basis van id of naam
 
-
+//extreme challenge: indexpage to show first 20 pokemon on first page, second 20 on next page etc
 
 ?>
 
