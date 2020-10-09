@@ -81,10 +81,18 @@ do {
     <input type="submit" value="click">
 </form>
 
-<div class="row">
-    <div class="col-sm-4">.col-sm-4</div>
-    <div class="col-sm-4">.col-sm-4</div>
-    <div class="col-sm-4">.col-sm-4</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
 </div>
 <nav aria-label="...">
     <ul class="pagination">
